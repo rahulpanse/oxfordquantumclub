@@ -1,0 +1,150 @@
+\documentclass[11pt, a4paper]{article}
+
+% --- Geometry & Margins ---
+\usepackage[a4paper, top=2.5cm, bottom=2.5cm, left=2.5cm, right=2.5cm]{geometry}
+
+% --- Font & Language Setup ---
+% Computer Modern is used by default in standard LaTeX engines.
+\usepackage[english]{babel}
+
+% --- Math Packages ---
+\usepackage{amsmath, amsfonts, amssymb, amsthm}
+\usepackage{physics} % Provides \bra{}, \ket{}, \braket{}, \expectationvalue{}, etc.
+\usepackage{bm}      % Bold math symbols
+
+% --- Formatting & Aesthetics ---
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage{titlesec} % Provides \titleformat and \titlerule
+
+% --- Brand Colors (Oxford Blue & Accents) ---
+\definecolor{OxfordBlue}{RGB}{0, 33, 71}
+\definecolor{SubtleBlue}{RGB}{235, 240, 248}
+\definecolor{AccentDark}{RGB}{15, 23, 42}
+\definecolor{BorderGray}{RGB}{203, 213, 225}
+\definecolor{BodyBlueGray}{RGB}{30, 41, 59} % Slate blue-gray tone for body text
+
+% --- Apply Body Text Color ---
+\color{BodyBlueGray}
+
+% --- Section Styling ---
+\titleformat{\section}
+  {\color{OxfordBlue}\normalfont\Large\bfseries}
+  {\thesection}{1em}{}
+  [\color{OxfordBlue}\titlerule]
+
+\titleformat{\subsection}
+  {\color{OxfordBlue}\normalfont\large\bfseries}
+  {\thesubsection}{1em}{}
+
+% --- Headers & Footers ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small \textbf{Oxford Quantum Club} \;\vline\; Prof. A. Lvovsky}
+\rhead{\small Quantum Information \& Control}
+\lfoot{\small Assignment Submission}
+\rfoot{\small Page \thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% --- Custom Environments for Problems & Solutions ---
+\newcounter{problemcounter}
+\setcounter{problemcounter}{0}
+
+\newcommand{\problemhead}[1][]{%
+  \refstepcounter{problemcounter}%
+  \vspace{1.5em}\noindent
+  {\Large\bfseries\color{OxfordBlue}Problem \arabic{problemcounter}\ifstrempty{#1}{}{: #1}}%
+  \par\vspace{0.5em}%
+}
+
+\newenvironment{solution}{%
+  \vspace{0.3em}\noindent
+  \textbf{\color{OxfordBlue}Solution:}\par\vspace{0.3em}\noindent
+}{%
+  \vspace{1.5em}\par\noindent\rule{\textwidth}{0.2pt}\vspace{0.5em}
+}
+
+% --- Hyperlinks ---
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=OxfordBlue,
+    citecolor=OxfordBlue,
+    urlcolor=OxfordBlue
+}
+
+% --- Document Metadata ---
+\title{%
+  \vspace{-1.5cm}
+  \color{OxfordBlue}\huge\bfseries Oxford Quantum Club \\[0.3em]
+  \Large Problem Set \& Assignment Template
+}
+\author{%
+  \textbf{Student Name:} [Your Name] \\[0.2em]
+  \small University of Oxford \;\cdot\; Department of Physics \\[0.2em]
+  \small \textit{Supervising Director:} Prof. Alexander Lvovsky
+}
+\date{\small \today}
+
+\begin{document}
+
+\maketitle
+\thispagestyle{fancy}
+
+% --- Assignment Header Card ---
+\begin{center}
+\small
+\begin{tabular}{ll}
+  \textbf{Course/Group:} & Quantum Optics \& Quantum Information \\
+  \textbf{Topic:} & Wigner Functions, Squeezed States \& Continuous Variables \\
+  \textbf{Submission Due:} & [Insert Due Date] \\
+\end{tabular}
+\end{center}
+
+\vspace{0.5em}
+
+% --- Problem 1 Solution ---
+\problemhead[Single-Mode Squeezed Vacuum State]
+
+\begin{solution}
+\textbf{Part a)} We apply the unitary transformation to $a$:
+\[
+b = S^\dagger(\xi) a S(\xi) = a \cosh r - a^\dagger e^{i\theta} \sinh r
+\]
+Using the commutation relations $[a, a^\dagger] = 1$, we evaluate the nested commutators:
+\[
+[\xi^* a^2 - \xi (a^\dagger)^2, a] = 2\xi a^\dagger
+\]
+Summing the series yields the standard Bogoliubov transformation for squeezed field operators.
+
+\textbf{Part b)} Evaluating the quadrature variances in terms of $r$ and $\theta$ (taking $\theta = 0$ for simplicity):
+\[
+(\Delta X)^2 = \frac{1}{2} e^{-2r}, \quad (\Delta P)^2 = \frac{1}{2} e^{2r}
+\]
+Notice that $(\Delta X)(\Delta P) = \frac{1}{2}$, saturating the Heisenberg uncertainty relation.
+\end{solution}
+
+% --- Problem 2 Solution ---
+\problemhead[Wigner Function of a Fock State]
+
+\begin{solution}
+For the single-photon state $\rho = \ket{1}\bra{1}$, the position wave function is:
+\[
+\psi_1(x) = \braket{x}{1} = \left( \frac{m\omega}{\pi \hbar} \right)^{1/4} \sqrt{\frac{2m\omega}{\hbar}} x \exp\left( -\frac{m\omega x^2}{2\hbar} \right)
+\]
+Substituting $\psi_1(x)$ into the Wigner transform integral:
+\[
+W_1(x, p) = \frac{1}{\pi\hbar} \left( 4 \left( \frac{x}{x_0} \right)^2 + 4 \left( \frac{p}{p_0} \right)^2 - 1 \right) \exp\left( -\frac{x^2}{x_0^2} - \frac{p^2}{p_0^2} \right)
+\]
+At the origin $(x = 0, p = 0)$, we find:
+\[
+W_1(0, 0) = -\frac{1}{\pi\hbar} < 0
+\]
+This non-positivity is a signature of non-classicality in quantum optics.
+\end{solution}
+
+\end{document}
