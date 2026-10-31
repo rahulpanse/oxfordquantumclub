@@ -107,44 +107,6 @@
 
 \vspace{0.5em}
 
-% --- Problem 1 Solution ---
-\problemhead[Single-Mode Squeezed Vacuum State]
-
-\begin{solution}
-\textbf{Part a)} We apply the unitary transformation to $a$:
-\[
-b = S^\dagger(\xi) a S(\xi) = a \cosh r - a^\dagger e^{i\theta} \sinh r
-\]
-Using the commutation relations $[a, a^\dagger] = 1$, we evaluate the nested commutators:
-\[
-[\xi^* a^2 - \xi (a^\dagger)^2, a] = 2\xi a^\dagger
-\]
-Summing the series yields the standard Bogoliubov transformation for squeezed field operators.
-
-\textbf{Part b)} Evaluating the quadrature variances in terms of $r$ and $\theta$ (taking $\theta = 0$ for simplicity):
-\[
-(\Delta X)^2 = \frac{1}{2} e^{-2r}, \quad (\Delta P)^2 = \frac{1}{2} e^{2r}
-\]
-Notice that $(\Delta X)(\Delta P) = \frac{1}{2}$, saturating the Heisenberg uncertainty relation.
-\end{solution}
-
-% --- Problem 2 Solution ---
-\problemhead[Wigner Function of a Fock State]
-
-\begin{solution}
-For the single-photon state $\rho = \ket{1}\bra{1}$, the position wave function is:
-\[
-\psi_1(x) = \braket{x}{1} = \left( \frac{m\omega}{\pi \hbar} \right)^{1/4} \sqrt{\frac{2m\omega}{\hbar}} x \exp\left( -\frac{m\omega x^2}{2\hbar} \right)
-\]
-Substituting $\psi_1(x)$ into the Wigner transform integral:
-\[
-W_1(x, p) = \frac{1}{\pi\hbar} \left( 4 \left( \frac{x}{x_0} \right)^2 + 4 \left( \frac{p}{p_0} \right)^2 - 1 \right) \exp\left( -\frac{x^2}{x_0^2} - \frac{p^2}{p_0^2} \right)
-\]
-At the origin $(x = 0, p = 0)$, we find:
-\[
-W_1(0, 0) = -\frac{1}{\pi\hbar} < 0
-\]
-This non-positivity is a signature of non-classicality in quantum optics.
-\end{solution}
+% Solutions go here.
 
 \end{document}
